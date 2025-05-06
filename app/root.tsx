@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Links,
   Meta,
@@ -6,8 +7,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import "@radix-ui/themes/styles.css";
+import { Theme } from "@radix-ui/themes";
 
-import styles from "./tailwind.css?url"
+import styles from "./tailwind.css";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,9 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <Theme appearance="light" accentColor="indigo">
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </Theme>
       </body>
     </html>
   );
